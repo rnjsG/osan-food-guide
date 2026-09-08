@@ -61,7 +61,7 @@
             z-index: 10;
         }
 
-        /* 검색창 애니메이션 디자인 */
+        /* 검색창 디자인 */
         .search-box {
             display: flex;
             justify-content: center;
@@ -536,7 +536,7 @@
             },
             {
                 id: 5,
-                name: "메르오르 본점",
+                name: "메르오르",
                 category: "카페/양식",
                 desc: "넓은 야외 정원과 파스타, 브런치를 함께 즐기는 세교 대형 레스토랑.",
                 hours: "10:00 - 21:00 (라스트오더 20:00)",
@@ -612,7 +612,7 @@
             },
             {
                 id: 10,
-                name: "북극해고등어 본점",
+                name: "북극해고등어",
                 category: "생선구이/한식",
                 desc: "대형 화덕에서 겉은 바삭하고 속은 촉촉하게 구워내는 생선구이 정식.",
                 hours: "11:00 - 21:00 (라스트오더 20:15)",
@@ -669,8 +669,8 @@
                 menuHtml += `<li class="menu-item"><span>${menu.name}</span><strong>${menu.price}</strong></li>`;
             });
 
-            // 지도 검색 시 '가게 이름'으로만 검색 연결
-            const mapSearchUrl = `https://map.naver.com/v5/search/${encodeURIComponent(resto.name)}`;
+            // 오직 상호명만 정확하게 네이버 지도 검색 URL로 인코딩
+            const mapSearchUrl = "https://map.naver.com/v5/search/" + encodeURIComponent(resto.name);
 
             const bodyHtml = `
                 <p style="color: #94a3b8; margin-bottom: 1.2rem; font-size: 1rem;">${resto.desc}</p>
@@ -687,7 +687,7 @@
                 <!-- 외부 연결 및 복사/메일 액션 영역 -->
                 <div class="action-box">
                     <a href="${mapSearchUrl}" target="_blank" class="btn-action btn-site">
-                        🗺️ 지도에서 '${resto.name}' 바로 검색하기 ➔
+                        🗺️ 지도에서 '${resto.name}' 검색하기 ➔
                     </a>
 
                     <button class="btn-action btn-secondary" onclick="copyRestoInfo('${resto.name}', '${resto.location}', '${resto.hours}', '${mapSearchUrl}')">
