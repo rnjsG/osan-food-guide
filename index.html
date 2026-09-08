@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>오산 찐 맛집 큐레이션</title>
+    <title>오산 찐 맛집 30선</title>
     <style>
         @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
 
@@ -25,7 +25,7 @@
         }
 
         header {
-            padding: 5rem 1.5rem 3.5rem 1.5rem;
+            padding: 4.5rem 1.5rem 3rem 1.5rem;
             text-align: center;
             position: relative;
             background: linear-gradient(180deg, rgba(15, 23, 42, 0.8) 0%, rgba(11, 15, 25, 0) 100%);
@@ -45,7 +45,7 @@
         }
 
         header h1 {
-            font-size: 2.8rem;
+            font-size: 2.6rem;
             font-weight: 800;
             letter-spacing: -1px;
             background: linear-gradient(135deg, #ffffff 30%, #94a3b8 100%);
@@ -55,13 +55,13 @@
         }
 
         header p {
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             color: #94a3b8;
             font-weight: 400;
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1240px;
             margin: 0 auto 4rem auto;
             padding: 0 1.5rem;
         }
@@ -69,7 +69,7 @@
         .search-box-wrapper {
             display: flex;
             justify-content: center;
-            margin-bottom: 3.5rem;
+            margin-bottom: 3rem;
         }
 
         .search-box {
@@ -150,7 +150,7 @@
 
         .img-wrapper {
             width: 100%;
-            height: 200px;
+            height: 190px;
             overflow: hidden;
             position: relative;
         }
@@ -167,7 +167,7 @@
         }
 
         .card-content {
-            padding: 1.5rem;
+            padding: 1.4rem;
             display: flex;
             flex-direction: column;
             flex-grow: 1;
@@ -181,7 +181,7 @@
         }
 
         .card-title {
-            font-size: 1.25rem;
+            font-size: 1.2rem;
             font-weight: 700;
             color: #f8fafc;
         }
@@ -197,7 +197,7 @@
         }
 
         .card-desc {
-            font-size: 0.92rem;
+            font-size: 0.9rem;
             color: #94a3b8;
             margin-bottom: 1.2rem;
             line-height: 1.5;
@@ -211,7 +211,7 @@
             font-size: 0.85rem;
             color: #64748b;
             border-top: 1px solid rgba(255, 255, 255, 0.06);
-            padding-top: 0.9rem;
+            padding-top: 0.8rem;
         }
 
         .rating {
@@ -448,15 +448,15 @@
 <body>
 
     <header>
-        <span class="badge-top">OSAN LOCAL FOOD MAP</span>
-        <h1>오산 찐 맛집 큐레이션</h1>
-        <p>오산의 엄선된 대표 맛집과 정보를 한눈에 찾아보세요</p>
+        <span class="badge-top">OSAN LOCAL FOOD MAP (TOP 30)</span>
+        <h1>오산 찐 맛집 30선</h1>
+        <p>오산 지역의 검증된 대표 맛집을 한눈에 탐색하세요</p>
     </header>
 
     <div class="container">
         <div class="search-box-wrapper">
             <div class="search-box">
-                <input type="text" id="searchInput" placeholder="식당명, 메뉴, 위치 검색 (예: 형제초밥, 국밥, 운암)..." onkeyup="searchRestaurant()">
+                <input type="text" id="searchInput" placeholder="식당명, 카테고리, 메뉴, 위치 검색..." onkeyup="searchRestaurant()">
                 <button onclick="searchRestaurant()">검색</button>
             </div>
         </div>
@@ -475,7 +475,7 @@
     </div>
 
     <footer>
-        <p>&copy; Osan Food Guide. Premium Interactive Edition.</p>
+        <p>&copy; Osan Food Guide 30. Premium Interactive Edition.</p>
     </footer>
 
     <script>
@@ -490,81 +490,76 @@
                 location: "경기 오산시 대원로 65, 운암프라자 2층",
                 image: "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?w=600&auto=format&fit=crop&q=80",
                 menus: [
-                    { name: "회전초밥 (접시당 균일가)", price: "1,690원" },
-                    { name: "육회초밥 / 연어샐러드초밥", price: "변동" },
-                    { name: "광어지느러미 / 도미초밥", price: "변동" }
+                    { name: "회전초밥 (접시당)", price: "1,690원" },
+                    { name: "육회초밥 / 연어초밥", price: "변동" }
                 ],
-                review: "웨이팅이 필수일 정도로 인기인 회전초밥집. 신선한 육회초밥과 연어초밥 평이 특히 우수함."
+                review: "웨이팅이 필수일 정도로 인기 있는 회전초밥집. 육회초밥 평이 특히 우수함."
             },
             {
                 id: 2,
                 name: "대흥식당",
                 category: "국밥/수육",
-                desc: "오색시장 내 위치한 50년 전통의 돼지머리국밥 전문 노포.",
+                desc: "오색시장 내 위치한 전통의 돼지머리국밥 전문 노포.",
                 hours: "08:00 - 20:00 (매달 1, 3번째 월요일 휴무)",
                 rating: 4.9,
                 location: "경기 오산시 오산로278번길 9-12 (오산동)",
                 image: "https://images.unsplash.com/photo-1541832676-9b763b0239ab?w=600&auto=format&fit=crop&q=80",
                 menus: [
                     { name: "돼지머리국밥", price: "10,000원" },
-                    { name: "돼지머리수육 (소)", price: "12,000원" },
-                    { name: "돼지머리수육 (중)", price: "17,000원" }
+                    { name: "돼지머리수육", price: "12,000원" }
                 ],
-                review: "구수한 토렴식 국물과 잡내 없이 야들야들한 수육 맛이 일품인 오산 로컬 대표 맛집."
+                review: "구수한 토렴식 국물과 잡내 없는 수육이 유명한 오산 시장 대표 맛집."
             },
             {
                 id: 3,
                 name: "부용식당",
                 category: "국밥/순대",
-                desc: "블루리본 선정, 20년 전통의 오색시장 대표 순대국밥집.",
+                desc: "블루리본 선정, 오색시장의 대표적인 순대국밥 맛집.",
                 hours: "07:00 - 20:30 (매주 월요일 정기휴무)",
                 rating: 4.8,
-                location: "경기 오산시 오산로 845-10 (오색시장 내)",
+                location: "경기 오산시 오산로 845-10",
                 image: "https://images.unsplash.com/photo-1555126634-323283e090fa?w=600&auto=format&fit=crop&q=80",
                 menus: [
                     { name: "돼지국밥", price: "9,000원" },
-                    { name: "순대국", price: "9,000원" },
-                    { name: "수육", price: "20,000원" }
+                    { name: "순대국", price: "9,000원" }
                 ],
-                review: "깔끔하고 진한 사골 육수 덕분에 국밥 마니아들 사이에서 꾸준히 찬사를 받는 곳."
+                review: "깊고 진한 사골 육수와 정갈한 국밥 구성으로 단골이 많은 곳."
             },
             {
                 id: 4,
                 name: "새말해장국",
                 category: "해장국/고기",
-                desc: "얼큰한 선지해장국과 내장탕이 일품인 대표 해장 맛집.",
+                desc: "얼큰한 선지해장국과 내장탕이 일품인 오산 대표 해장 전문점.",
                 hours: "06:00 - 22:00 (연중무휴)",
                 rating: 4.7,
                 location: "경기 오산시 현충로 95",
                 image: "https://images.unsplash.com/photo-1582878826629-29b7ad1cdc43?w=600&auto=format&fit=crop&q=80",
                 menus: [
                     { name: "선지해장국", price: "11,000원" },
-                    { name: "얼큰 내장탕", price: "13,000원" },
-                    { name: "우거지갈비탕", price: "14,000원" }
+                    { name: "얼큰 내장탕", price: "13,000원" }
                 ],
-                review: "속이 확 풀리는 깊고 얼큰한 국물 맛으로 언제나 단골들로 붐비는 곳."
+                review: "속이 시원하게 풀리는 깊은 국물 맛으로 유명한 해장국집."
             },
             {
                 id: 5,
                 name: "메르오르",
                 category: "카페/양식",
-                desc: "넓은 야외 정원과 파스타, 브런치를 함께 즐기는 세교 대형 레스토랑.",
+                desc: "넓은 야외 정원과 파스타를 함께 즐길 수 있는 대형 레스토랑.",
                 hours: "10:00 - 21:00 (라스트오더 20:00)",
                 rating: 4.7,
                 location: "경기 오산시 두곡동 11",
                 image: "https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=600&auto=format&fit=crop&q=80",
                 menus: [
                     { name: "묵은지 오일 파스타", price: "23,000원" },
-                    { name: "마라 크림 파스타", price: "24,000원" },
                     { name: "전복 크림 리조또", price: "26,000원" }
                 ],
-                review: "분위기가 뛰어나 데이트나 아이 동반 가족 모임 장소로 강력 추천하는 곳."
+                review: "경관이 뛰어나 가족 외식 및 모임 장소로 평가가 좋음."
             },
             {
                 id: 6,
                 name: "황금장수촌",
                 category: "보양식/백숙",
-                desc: "상황버섯 누룽지 닭·오리 백숙 전문 건강 보양식당.",
+                desc: "상황버섯 누룽지 닭·오리 백숙 전문 보양식당.",
                 hours: "11:00 - 21:30 (매주 화요일 휴무)",
                 rating: 4.6,
                 location: "경기 오산시 성호대로 126",
@@ -573,14 +568,14 @@
                     { name: "황금상황 삼계탕", price: "19,000원" },
                     { name: "누룽지 닭백숙", price: "68,000원" }
                 ],
-                review: "진하고 구수한 상황버섯 국물에 쫄깃한 누룽지가 통으로 들어가 어르신 모시기 좋은 곳."
+                review: "구수한 누룽지 백숙과 진한 국물 맛으로 어르신 모시기에 제격."
             },
             {
                 id: 7,
                 name: "우용면옥",
                 category: "냉면/갈비탕",
-                desc: "직접 뽑은 쫄깃한 면발과 깔끔한 온육수가 인상적인 함흥냉면 전문점.",
-                hours: "11:00 - 21:00 (하절기 휴무 없음)",
+                desc: "직접 뽑은 면발과 깔끔한 온육수의 함흥냉면 전문점.",
+                hours: "11:00 - 21:00",
                 rating: 4.7,
                 location: "경기 오산시 수청로 50",
                 image: "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=600&auto=format&fit=crop&q=80",
@@ -588,13 +583,13 @@
                     { name: "물냉면 / 비빔냉면", price: "11,000원" },
                     { name: "왕갈비탕", price: "15,000원" }
                 ],
-                review: "양념이 새콤달콤 맛있고 양이 푸짐하며 여름철 대기 필수인 오산 냉면 명가."
+                review: "여름철 대기열이 생길 만큼 냉면 육수와 면발의 조화가 훌륭한 곳."
             },
             {
                 id: 8,
                 name: "운암명가 부대찌개",
                 category: "한식/찌개",
-                desc: "파채와 마늘, 햄이 수북하게 올려진 시원하고 진한 오산 1위 부대찌개.",
+                desc: "파채와 마늘, 햄이 듬뿍 올려진 진한 오산 대표 부대찌개.",
                 hours: "10:00 - 21:30 (매주 일요일 휴무)",
                 rating: 4.8,
                 location: "경기 오산시 대원로 63",
@@ -603,14 +598,14 @@
                     { name: "부대찌개 (1인분)", price: "11,000원" },
                     { name: "라면사리", price: "1,000원" }
                 ],
-                review: "파에서 나오는 단맛과 특제 양념의 조화가 독보적임. 밥 두 공기가 기본인 집."
+                review: "파에서 우러나오는 단맛과 깊은 양념의 조화가 매력적."
             },
             {
                 id: 9,
                 name: "민들레화로",
                 category: "고기/숯불구이",
-                desc: "참숯불에 통으로 굴려가며 구워 먹는 통갈매기살 육즙 명가.",
-                hours: "11:30 - 22:00 (라스트오더 21:00)",
+                desc: "참숯불에 구워 먹는 통갈매기살 육즙 전문점.",
+                hours: "11:30 - 22:00",
                 rating: 4.7,
                 location: "경기 오산시 외삼미로 7",
                 image: "https://images.unsplash.com/photo-1544025162-d76694265947?w=600&auto=format&fit=crop&q=80",
@@ -618,22 +613,321 @@
                     { name: "통갈매기살 (500g)", price: "38,000원" },
                     { name: "김치말이국수", price: "6,000원" }
                 ],
-                review: "갈매기살의 육즙이 살아있으며 사이드로 나오는 시원한 김치말이국수와의 궁합이 환상적."
+                review: "두툼한 갈매기살의 풍부한 육즙과 사이드 국수의 조화가 상쾌함."
             },
             {
                 id: 10,
-                name: "북극해고등어",
+                name: "북극해고등어 오산본점",
                 category: "생선구이/한식",
-                desc: "대형 화덕에서 겉은 바삭하고 속은 촉촉하게 구워내는 생선구이 정식.",
-                hours: "11:00 - 21:00 (라스트오더 20:15)",
+                desc: "화덕에서 바삭하고 촉촉하게 구워내는 생선구이 전문점.",
+                hours: "11:00 - 21:00",
                 rating: 4.8,
-                location: "경기 오산시 경기동로 131",
+                location: "경기 오산시 경기대로 845",
                 image: "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?w=600&auto=format&fit=crop&q=80",
                 menus: [
-                    { name: "화덕 고등어구이 정식", price: "14,000원" },
-                    { name: "화덕 삼치구이 정식", price: "16,000원" }
+                    { name: "화덕 고등어구이", price: "14,000원" },
+                    { name: "화덕 삼치구이", price: "16,000원" }
                 ],
-                review: "비린내가 전혀 없고 담백하며 무한 리필 셀프 바의 정갈한 밑반찬들도 훌륭함."
+                review: "담백한 생선구이와 정갈한 무한리필 반찬이 인상적."
+            },
+            {
+                id: 11,
+                name: "신주옥 오산점",
+                category: "국밥/순대",
+                desc: "고사리가 드간 특제 순대국과 찹쌀누룽지 돼지국밥 전문점.",
+                hours: "10:00 - 22:00",
+                rating: 4.8,
+                location: "경기 오산시 경기대로 142",
+                image: "https://images.unsplash.com/photo-1541832676-9b763b0239ab?w=600&auto=format&fit=crop&q=80",
+                menus: [
+                    { name: "순대국", price: "10,000원" },
+                    { name: "고사리 순대국", price: "11,000원" }
+                ],
+                review: "고사리의 풍미가 진하게 밴 잡내 없는 깔끔한 국물 스타일."
+            },
+            {
+                id: 12,
+                name: "봄설 본점",
+                category: "한정식",
+                desc: "정갈하게 나오는 청국장과 돌솥밥, 쌈채 중심의 한정식집.",
+                hours: "11:00 - 21:00",
+                rating: 4.6,
+                location: "경기 오산시 경기대로 845",
+                image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=600&auto=format&fit=crop&q=80",
+                menus: [
+                    { name: "제육쌈밥 정식", price: "14,000원" },
+                    { name: "봄설한상", price: "18,000원" }
+                ],
+                review: "부모님 모시고 가기 좋은 깔끔하고 속 편한 밥집."
+            },
+            {
+                id: 13,
+                name: "오산할머니집",
+                category: "설렁탕/수육",
+                desc: "3대를 이어온 깊고 진한 전통 설렁탕 노포 전문점.",
+                hours: "07:00 - 21:00",
+                rating: 4.7,
+                location: "경기 오산시 오산로300번길 3",
+                image: "https://images.unsplash.com/photo-1547592166-23ac45744acd?w=600&auto=format&fit=crop&q=80",
+                menus: [
+                    { name: "설렁탕", price: "12,000원" },
+                    { name: "수육", price: "40,000원" }
+                ],
+                review: "오산 역사와 함께한 곳으로 깊고 담백한 뽀얀 사골 국물이 일품."
+            },
+            {
+                id: 14,
+                name: "광명홍두깨칼국수",
+                category: "칼국수/수제비",
+                desc: "오색시장 안에서 직접 면을 밀어 만드는 가성비 최고의 칼국수집.",
+                hours: "09:00 - 20:00",
+                rating: 4.6,
+                location: "경기 오산시 성호새싹길 44",
+                image: "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=600&auto=format&fit=crop&q=80",
+                menus: [
+                    { name: "손칼국수", price: "6,000원" },
+                    { name: "손수제비", price: "6,000원" }
+                ],
+                review: "착한 가격에 양도 푸짐하고 쫄깃한 면발을 맛볼 수 있는 전통시장 명소."
+            },
+            {
+                id: 15,
+                name: "골드헤겔",
+                category: "베이커리/카페",
+                desc: "명장 홍종흔의 대형 프리미엄 베이커리 힐링 카페.",
+                hours: "08:00 - 22:00",
+                rating: 4.8,
+                location: "경기 오산시 외삼미로 162-32",
+                image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=600&auto=format&fit=crop&q=80",
+                menus: [
+                    { name: "어니언 바질 크런치", price: "변동" },
+                    { name: "아메리카노", price: "6,000원" }
+                ],
+                review: "다양하고 맛있는 빵과 드넓은 카페 공간 덕분에 인기가 높음."
+            },
+            {
+                id: 16,
+                name: "최미삼순대국 오산점",
+                category: "국밥/순대",
+                desc: "갓 지은 냄비밥과 숭늉 서비스가 매력적인 순대국 전문점.",
+                hours: "06:00 - 21:00",
+                rating: 4.8,
+                location: "경기 오산시 부산동 219-21",
+                image: "https://images.unsplash.com/photo-1541832676-9b763b0239ab?w=600&auto=format&fit=crop&q=80",
+                menus: [
+                    { name: "순대국밥", price: "10,000원" },
+                    { name: "고기만국밥", price: "10,000원" }
+                ],
+                review: "언제나 줄 서서 먹는 곳. 식사 후 나오는 따뜻한 숭늉이 최고."
+            },
+            {
+                id: 17,
+                name: "불티나꼬막짬뽕 오산점",
+                category: "중식/짬뽕",
+                desc: "탱글한 꼬막이 수북하게 들어가 국물이 진한 불맛 짬뽕 맛집.",
+                hours: "11:00 - 20:30 (월요일 휴무)",
+                rating: 4.7,
+                location: "경기 오산시 문시로 124",
+                image: "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=600&auto=format&fit=crop&q=80",
+                menus: [
+                    { name: "꼬막짬뽕", price: "10,000원" },
+                    { name: "탕수육", price: "18,000원" }
+                ],
+                review: "칼칼하고 진한 고기 짬뽕 육수에 꼬막 씹는 맛이 매력적."
+            },
+            {
+                id: 18,
+                name: "행복한 콩박사",
+                category: "두부/한식",
+                desc: "국산 콩으로 직접 만든 손두부와 두부전골 전문 건강식당.",
+                hours: "11:00 - 21:00",
+                rating: 4.6,
+                location: "경기 오산시 양산로 10",
+                image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=600&auto=format&fit=crop&q=80",
+                menus: [
+                    { name: "짜박두부", price: "11,000원" },
+                    { name: "두부보쌈", price: "35,000원" }
+                ],
+                review: "자극적이지 않고 고소한 손두부 본연의 맛을 제대로 느낄 수 있음."
+            },
+            {
+                id: 19,
+                name: "백세삼계탕 동탄오산점",
+                category: "삼계탕/보양식",
+                desc: "상황버섯이 들어가 노랗고 진한 걸쭉한 육수의 삼계탕 전문점.",
+                hours: "10:30 - 21:00",
+                rating: 4.7,
+                location: "경기 오산시 독산성로 2705",
+                image: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&auto=format&fit=crop&q=80",
+                menus: [
+                    { name: "상황삼계탕", price: "18,000원" },
+                    { name: "한방삼계탕", price: "20,000원" }
+                ],
+                review: "국물이 마치 보약처럼 걸쭉하고 닭고기가 부드럽게 찢어짐."
+            },
+            {
+                id: 20,
+                name: "매화쌈밥 오산점",
+                category: "쌈밥/한식",
+                desc: "우렁쌈밥과 제육볶음, 다양한 쌈채소를 무한으로 즐기는 식당.",
+                hours: "11:30 - 21:30",
+                rating: 4.6,
+                location: "경기 오산시 세교동 369-8",
+                image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=600&auto=format&fit=crop&q=80",
+                menus: [
+                    { name: "우렁쌈밥 정식", price: "16,900원" }
+                ],
+                review: "신선한 쌈채소를 듬뿍 먹을 수 있어 건강한 한 한 상 차림으로 인기."
+            },
+            {
+                id: 21,
+                name: "장강",
+                category: "중식/수타",
+                desc: "쫄깃한 수타 면발의 짜장면과 짬뽕이 유명한 오산 정통 중식당.",
+                hours: "11:00 - 21:00",
+                rating: 4.6,
+                location: "경기 오산시 경기대로 801",
+                image: "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=600&auto=format&fit=crop&q=80",
+                menus: [
+                    { name: "수타 손짜장", price: "8,000원" },
+                    { name: "수타 해물짬뽕", price: "10,000원" }
+                ],
+                review: "수타면 특유의 기분 좋은 식감과 푸짐한 양이 매력적인 집."
+            },
+            {
+                id: 22,
+                name: "짬뽕지존 오산점",
+                category: "중식/짬뽕",
+                desc: "매운맛 조절이 가능하며 양과 재료가 풍부한 24시 짬뽕 전문점.",
+                hours: "00:00 - 24:00 (24시간 영업)",
+                rating: 4.7,
+                location: "경기 오산시 경기대로 273",
+                image: "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=600&auto=format&fit=crop&q=80",
+                menus: [
+                    { name: "지존짬뽕", price: "12,000원" },
+                    { name: "찹쌀탕수육", price: "18,000원" }
+                ],
+                review: "해산물과 고기 고명이 푸짐하고 매콤한 국물 중독성이 강함."
+            },
+            {
+                id: 23,
+                name: "양심소 세교점",
+                category: "소고기/구이",
+                desc: "가성비 뛰어난 숯불 소고기 갈비살 전문 구이집.",
+                hours: "11:30 - 22:30",
+                rating: 4.7,
+                location: "경기 오산시 수청로 191",
+                image: "https://images.unsplash.com/photo-1544025162-d76694265947?w=600&auto=format&fit=crop&q=80",
+                menus: [
+                    { name: "양심소 한판 (500g)", price: "49,000원" },
+                    { name: "양념 소갈비살", price: "변동" }
+                ],
+                review: "숯불 향이 그윽하게 배인 생갈비살과 양념 갈비살이 고소함."
+            },
+            {
+                id: 24,
+                name: "콩마당",
+                category: "한식/두부",
+                desc: "독산성 세마대 근처 순두부 및 청국장 전문 한식당.",
+                hours: "10:30 - 21:00",
+                rating: 4.5,
+                location: "경기 오산시 독산성로 225",
+                image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=600&auto=format&fit=crop&q=80",
+                menus: [
+                    { name: "청국장 정식", price: "10,000원" },
+                    { name: "해물순두부", price: "10,000원" }
+                ],
+                review: "독산성 등산 후 들르기 좋은 토속적이고 은은한 시골 밥상 맛."
+            },
+            {
+                id: 25,
+                name: "문전대박닭강정",
+                category: "닭강정/치킨",
+                desc: "오색시장 대표 명물 식어도 바삭한 닭강정 전문점.",
+                hours: "09:30 - 20:30 (재료 소진시 마감)",
+                rating: 4.8,
+                location: "경기 오산시 시장길 19",
+                image: "https://images.unsplash.com/photo-1562967914-608f82629710?w=600&auto=format&fit=crop&q=80",
+                menus: [
+                    { name: "닭강정 (대)", price: "18,000원" },
+                    { name: "닭강정 (중)", price: "10,000원" }
+                ],
+                review: "양념이 달콤매콤하고 시간이 지나도 바삭한 식감이 유지됨."
+            },
+            {
+                id: 26,
+                name: "정담명가 남원추어탕",
+                category: "추어탕/보양식",
+                desc: "진한 추어탕과 정갈한 셀프 반찬바가 매력적인 구수한 맛집.",
+                hours: "10:00 - 21:00",
+                rating: 4.7,
+                location: "경기 오산시 서부로 59",
+                image: "https://images.unsplash.com/photo-1547592166-23ac45744acd?w=600&auto=format&fit=crop&q=80",
+                menus: [
+                    { name: "남원추어탕", price: "11,000원" },
+                    { name: "수제돈가스", price: "10,000원" }
+                ],
+                review: "비린 맛 없이 고소하고 걸쭉하여 든든한 한 끼 보양에 제격."
+            },
+            {
+                id: 27,
+                name: "백미헌",
+                category: "한식/솥밥",
+                desc: "정갈한 솥밥 정식과 우아한 인테리어의 세교 한식 맛집.",
+                hours: "11:00 - 21:00",
+                rating: 4.6,
+                location: "경기 오산시 문시로 133",
+                image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=600&auto=format&fit=crop&q=80",
+                menus: [
+                    { name: "곤드레 솥밥정식", price: "15,000원" },
+                    { name: "제육 솥밥정식", price: "16,000원" }
+                ],
+                review: "음식이 정갈하게 나오고 매장이 깔끔해 손님 대접용으로 좋은 곳."
+            },
+            {
+                id: 28,
+                name: "청담집",
+                category: "설렁탕/갈비탕",
+                desc: "가마솥에서 장시간 푹 고아낸 가마솥 소머리국밥 및 갈비탕.",
+                hours: "00:00 - 24:00 (24시간 영업)",
+                rating: 4.6,
+                location: "경기 오산시 경기대로 407",
+                image: "https://images.unsplash.com/photo-1547592166-23ac45744acd?w=600&auto=format&fit=crop&q=80",
+                menus: [
+                    { name: "가마솥 왕갈비탕", price: "15,000원" },
+                    { name: "소머리곰탕", price: "12,000원" }
+                ],
+                review: "갈빗대에 살집이 두툼하게 붙어 있으며 국물이 깊고 깨끗함."
+            },
+            {
+                id: 29,
+                name: "황제능이해신탕",
+                category: "해신탕/보양식",
+                desc: "능이버섯과 각종 해산물, 닭/오리가 어우러진 최고급 보양 요리.",
+                hours: "11:00 - 22:00",
+                rating: 4.7,
+                location: "경기 오산시 북삼미로 245-4",
+                image: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&auto=format&fit=crop&q=80",
+                menus: [
+                    { name: "황제 능이해신탕", price: "100,000원~" },
+                    { name: "능이백숙", price: "70,000원" }
+                ],
+                review: "푸짐한 해산물과 능이버섯의 향이 감도는 진국 육수가 보양에 으뜸."
+            },
+            {
+                id: 30,
+                name: "김경자대구왕뽈찜 오산궐동점",
+                category: "해물/뽈찜",
+                desc: "매콤하고 아삭한 콩나물과 쫄깃한 대구 뽈살이 일품인 찜 전문점.",
+                hours: "11:00 - 22:00",
+                rating: 4.6,
+                location: "경기 오산시 대원로 12",
+                image: "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?w=600&auto=format&fit=crop&q=80",
+                menus: [
+                    { name: "해물대구뽈찜 (소)", price: "39,000원" },
+                    { name: "해물아구찜 (소)", price: "39,000원" }
+                ],
+                review: "양념의 중독성이 강하며 아구와 대구살이 실하게 들어있음."
             }
         ];
 
@@ -651,7 +945,7 @@
             list.forEach((resto, index) => {
                 const card = document.createElement('div');
                 card.className = 'card';
-                card.style.animation = `fadeInUp 0.4s ease ${index * 0.05}s both`;
+                card.style.animation = `fadeInUp 0.3s ease ${Math.min(index * 0.03, 0.6)}s both`;
                 card.onclick = () => openModal(resto);
                 card.innerHTML = `
                     <div class="img-wrapper">
