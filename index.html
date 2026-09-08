@@ -19,7 +19,6 @@
             overflow-x: hidden;
         }
 
-        /* 화려한 오로라 백그라운드 애니메이션 헤더 */
         header {
             background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
             background-size: 400% 400%;
@@ -61,7 +60,6 @@
             z-index: 10;
         }
 
-        /* 검색창 디자인 */
         .search-box {
             display: flex;
             justify-content: center;
@@ -111,7 +109,6 @@
             opacity: 0.9;
         }
 
-        /* 그리드 & 카드 디자인 */
         .restaurant-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -208,7 +205,6 @@
             gap: 4px;
         }
 
-        /* 모달 팝업 */
         .modal {
             display: none;
             position: fixed;
@@ -339,7 +335,6 @@
             border: 1px solid rgba(255,255,255,0.05);
         }
 
-        /* 액션 영역 */
         .action-box {
             margin-top: 2rem;
             padding: 1.5rem;
@@ -453,7 +448,6 @@
         <div class="restaurant-grid" id="restaurantGrid"></div>
     </div>
 
-    <!-- 모달 상세창 -->
     <div class="modal" id="detailModal">
         <div class="modal-content">
             <div class="modal-header">
@@ -627,6 +621,8 @@
             }
         ];
 
+        let currentSelectedResto = null;
+
         function displayRestaurants(list) {
             const grid = document.getElementById('restaurantGrid');
             grid.innerHTML = '';
@@ -662,6 +658,7 @@
         }
 
         function openModal(resto) {
+            currentSelectedResto = resto;
             document.getElementById('modalTitle').innerText = resto.name;
             
             let menuHtml = '';
@@ -669,8 +666,9 @@
                 menuHtml += `<li class="menu-item"><span>${menu.name}</span><strong>${menu.price}</strong></li>`;
             });
 
-            // 오직 상호명만 정확하게 네이버 지도 검색 URL로 인코딩
-            const mapSearchUrl = "https://map.naver.com/v5/search/" + encodeURIComponent(resto.name);
+            // 검색어: "오산 [가게이름]" (정확한 오산 지점 검색을 보장)
+            const searchQuery = "오산 " + resto.name;
+            const mapSearchUrl = "https://map.naver.com/v5/search/" + encodeURIComponent(searchQuery);
 
             const bodyHtml = `
                 <p style="color: #94a3b8; margin-bottom: 1.2rem; font-size: 1rem;">${resto.desc}</p>
@@ -684,13 +682,12 @@
                 <div class="modal-section-title">💡 방문 요약 평</div>
                 <div class="review-box">${resto.review}</div>
 
-                <!-- 외부 연결 및 복사/메일 액션 영역 -->
                 <div class="action-box">
                     <a href="${mapSearchUrl}" target="_blank" class="btn-action btn-site">
-                        🗺️ 지도에서 '${resto.name}' 검색하기 ➔
+                        🗺️ 지도에서 '${searchQuery}' 바로 검색 ➔
                     </a>
 
-                    <button class="btn-action btn-secondary" onclick="copyRestoInfo('${resto.name}', '${resto.location}', '${resto.hours}', '${mapSearchUrl}')">
+                    <button class="btn-action btn-secondary" onclick="copyCurrentInfo()">
                         🔗 식당 정보 클립보드 복사
                     </button>
 
@@ -698,7 +695,7 @@
                         <div style="font-weight: bold; font-size: 0.95rem; color: #38bdf8;">✉️ 정보 메일로 보내기</div>
                         <div class="email-input-group">
                             <input type="email" id="targetEmail" placeholder="수신자 이메일 주소 입력">
-                            <button class="btn-action btn-primary" onclick="sendMailDirect('${resto.name}', '${resto.location}', '${resto.hours}', '${mapSearchUrl}')">전송</button>
+                            <button class="btn-action btn-primary" onclick="sendMailCurrent()">전송</button>
                         </div>
                     </div>
                 </div>
@@ -714,34 +711,41 @@
             modal.classList.remove('show');
         }
 
-        // 1. 이메일 전송 기능
-        function sendMailDirect(name, location, hours, mapUrl) {
+        function sendMailCurrent() {
+            if (!currentSelectedResto) return;
+            const resto = currentSelectedResto;
+            const searchQuery = "오산 " + resto.name;
+            const mapSearchUrl = "https://map.naver.com/v5/search/" + encodeURIComponent(searchQuery);
+
             const emailInput = document.getElementById('targetEmail').value.trim();
-            const subject = encodeURIComponent(`[오산 맛집 추천] ${name} 정보`);
+            const subject = encodeURIComponent(`[오산 맛집 추천] ${resto.name} 정보`);
             const body = encodeURIComponent(
-                `안녕하세요!\n\n오산 맛집 [ ${name} ] 정보를 공유합니다.\n\n` +
-                `📍 위치: ${location}\n` +
-                `⏰ 영업시간: ${hours}\n` +
-                `🗺️ 지도 검색: ${mapUrl}\n\n` +
+                `안녕하세요!\n\n오산 맛집 [ ${resto.name} ] 정보를 공유합니다.\n\n` +
+                `📍 위치: ${resto.location}\n` +
+                `⏰ 영업시간: ${resto.hours}\n` +
+                `🗺️ 지도 검색: ${mapSearchUrl}\n\n` +
                 `맛있는 식사 되세요!`
             );
 
-            const mailtoLink = `mailto:${emailInput}?subject=${subject}&body=${body}`;
-            window.location.href = mailtoLink;
+            window.location.href = `mailto:${emailInput}?subject=${subject}&body=${body}`;
 
-            if(emailInput) {
+            if (emailInput) {
                 alert(`${emailInput} 주소로 이메일 작성 창이 연결되었습니다.`);
             } else {
                 alert(`이메일 프로그램이 열렸습니다.`);
             }
         }
 
-        // 2. 클립보드 복사 기능
-        function copyRestoInfo(name, location, hours, mapUrl) {
-            const textToCopy = `[오산 맛집] ${name}\n위치: ${location}\n영업시간: ${hours}\n지도링크: ${mapUrl}`;
+        function copyCurrentInfo() {
+            if (!currentSelectedResto) return;
+            const resto = currentSelectedResto;
+            const searchQuery = "오산 " + resto.name;
+            const mapSearchUrl = "https://map.naver.com/v5/search/" + encodeURIComponent(searchQuery);
+
+            const textToCopy = `[오산 맛집] ${resto.name}\n위치: ${resto.location}\n영업시간: ${resto.hours}\n지도링크: ${mapSearchUrl}`;
             navigator.clipboard.writeText(textToCopy).then(() => {
-                alert(`'${name}' 정보가 클립보드에 복사되었습니다! 원하는 곳에 붙여넣어 공유하세요.`);
-            }).catch(err => {
+                alert(`'${resto.name}' 정보가 클립보드에 복사되었습니다! 원하는 곳에 붙여넣어 공유하세요.`);
+            }).catch(() => {
                 alert('복사 중 오류가 발생했습니다.');
             });
         }
