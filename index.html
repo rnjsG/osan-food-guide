@@ -111,7 +111,7 @@
             opacity: 0.9;
         }
 
-        /* 그리드 & 카드 3D 모션 디자인 */
+        /* 그리드 & 카드 디자인 */
         .restaurant-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -208,7 +208,7 @@
             gap: 4px;
         }
 
-        /* 모달 팝업 애니메이션 */
+        /* 모달 팝업 */
         .modal {
             display: none;
             position: fixed;
@@ -339,7 +339,7 @@
             border: 1px solid rgba(255,255,255,0.05);
         }
 
-        /* 공유 및 외부 링크 액션 영역 */
+        /* 액션 영역 */
         .action-box {
             margin-top: 2rem;
             padding: 1.5rem;
@@ -441,7 +441,7 @@
 
     <header>
         <h1>✨ 오산 찐 맛집 큐레이션</h1>
-        <p>영업시간부터 지도 위치 연결, 이메일 공유까지 한눈에!</p>
+        <p>영업시간부터 지도 검색 연결, 이메일 공유까지 한눈에!</p>
     </header>
 
     <div class="container">
@@ -472,7 +472,7 @@
         const restaurants = [
             {
                 id: 1,
-                name: "형제초밥 (오산본점)",
+                name: "형제초밥",
                 category: "일식/초밥",
                 desc: "오산시청 앞 운암프라자에 위치한 가성비 회전초밥 전문점.",
                 hours: "11:30 - 22:00 (브레이크타임 15:00 - 17:00)",
@@ -612,7 +612,7 @@
             },
             {
                 id: 10,
-                name: "북극해고등어 (본점)",
+                name: "북극해고등어 본점",
                 category: "생선구이/한식",
                 desc: "대형 화덕에서 겉은 바삭하고 속은 촉촉하게 구워내는 생선구이 정식.",
                 hours: "11:00 - 21:00 (라스트오더 20:15)",
@@ -669,8 +669,8 @@
                 menuHtml += `<li class="menu-item"><span>${menu.name}</span><strong>${menu.price}</strong></li>`;
             });
 
-            // 지도 사이트 연결 URL 생성
-            const mapSearchUrl = `https://map.naver.com/v5/search/${encodeURIComponent(resto.name + ' ' + resto.location)}`;
+            // 지도 검색 시 '가게 이름'으로만 검색 연결
+            const mapSearchUrl = `https://map.naver.com/v5/search/${encodeURIComponent(resto.name)}`;
 
             const bodyHtml = `
                 <p style="color: #94a3b8; margin-bottom: 1.2rem; font-size: 1rem;">${resto.desc}</p>
@@ -687,7 +687,7 @@
                 <!-- 외부 연결 및 복사/메일 액션 영역 -->
                 <div class="action-box">
                     <a href="${mapSearchUrl}" target="_blank" class="btn-action btn-site">
-                        🗺️ 지도 / 사이트로 바로 이동하기 ➔
+                        🗺️ 지도에서 '${resto.name}' 바로 검색하기 ➔
                     </a>
 
                     <button class="btn-action btn-secondary" onclick="copyRestoInfo('${resto.name}', '${resto.location}', '${resto.hours}', '${mapSearchUrl}')">
@@ -722,7 +722,7 @@
                 `안녕하세요!\n\n오산 맛집 [ ${name} ] 정보를 공유합니다.\n\n` +
                 `📍 위치: ${location}\n` +
                 `⏰ 영업시간: ${hours}\n` +
-                `🗺️ 지도 보기: ${mapUrl}\n\n` +
+                `🗺️ 지도 검색: ${mapUrl}\n\n` +
                 `맛있는 식사 되세요!`
             );
 
