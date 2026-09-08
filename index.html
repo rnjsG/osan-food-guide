@@ -9,125 +9,185 @@
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+            font-family: 'Pretendard', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
         }
 
         body {
-            background-color: #f4f6f9;
-            color: #333;
+            background-color: #0f172a;
+            color: #f8fafc;
+            min-height: 100vh;
+            overflow-x: hidden;
         }
 
+        /* 화려한 오로라 백그라운드 애니메이션 헤더 */
         header {
-            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradientBG 12s ease infinite;
             color: white;
             text-align: center;
-            padding: 2.5rem 1rem;
+            padding: 4rem 1rem 3rem 1rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            position: relative;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
+            font-size: 2.8rem;
+            margin-bottom: 0.8rem;
+            font-weight: 800;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            letter-spacing: -1px;
+            animation: fadeInDown 1s ease;
         }
 
         header p {
-            font-size: 1.1rem;
-            opacity: 0.9;
+            font-size: 1.2rem;
+            opacity: 0.95;
+            font-weight: 300;
+            animation: fadeInUp 1s ease;
         }
 
         .container {
-            max-width: 1200px;
-            margin: 2rem auto;
-            padding: 0 1rem;
+            max-width: 1240px;
+            margin: -2rem auto 3rem auto;
+            padding: 0 1.5rem;
+            position: relative;
+            z-index: 10;
         }
 
+        /* 검색창 애니메이션 디자인 */
         .search-box {
             display: flex;
             justify-content: center;
-            margin-bottom: 2rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+            border-radius: 50px;
+            overflow: hidden;
+            background: rgba(30, 41, 59, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .search-box:focus-within {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 40px rgba(35, 166, 213, 0.4);
+            border-color: #23a6d5;
         }
 
         .search-box input {
             width: 100%;
-            max-width: 500px;
-            padding: 0.9rem 1.2rem;
-            font-size: 1rem;
-            border: 2px solid #ddd;
-            border-radius: 30px 0 0 30px;
+            max-width: 600px;
+            padding: 1.2rem 1.8rem;
+            font-size: 1.1rem;
+            border: none;
             outline: none;
-            transition: border-color 0.3s;
+            background: transparent;
+            color: #fff;
         }
 
-        .search-box input:focus {
-            border-color: #2a5298;
+        .search-box input::placeholder {
+            color: #94a3b8;
         }
 
         .search-box button {
-            padding: 0 1.5rem;
-            background-color: #2a5298;
+            padding: 0 2rem;
+            background: linear-gradient(135deg, #23a6d5, #23d5ab);
             color: white;
             border: none;
-            font-size: 1rem;
-            border-radius: 0 30px 30px 0;
+            font-size: 1.1rem;
+            font-weight: bold;
             cursor: pointer;
-            transition: background-color 0.3s;
+            transition: opacity 0.3s;
         }
 
         .search-box button:hover {
-            background-color: #1e3c72;
+            opacity: 0.9;
         }
 
+        /* 그리드 & 카드 3D 모션 디자인 */
         .restaurant-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2.5rem;
         }
 
         .card {
-            background: white;
-            border-radius: 15px;
+            background: #1e293b;
+            border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             cursor: pointer;
+            position: relative;
+            display: flex;
+            flex-direction: column;
         }
 
         .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(35, 213, 171, 0.25);
+            border-color: rgba(35, 213, 171, 0.5);
+        }
+
+        .img-wrapper {
+            width: 100%;
+            height: 220px;
+            overflow: hidden;
+            position: relative;
         }
 
         .card img {
             width: 100%;
-            height: 200px;
+            height: 100%;
             object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .card:hover img {
+            transform: scale(1.1);
         }
 
         .card-content {
             padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
         }
 
         .card-title {
-            font-size: 1.3rem;
-            font-weight: bold;
-            margin-bottom: 0.5rem;
+            font-size: 1.35rem;
+            font-weight: 700;
+            margin-bottom: 0.6rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            color: #f1f5f9;
         }
 
         .card-category {
-            font-size: 0.75rem;
-            background-color: #e3f2fd;
-            color: #1976d2;
-            padding: 0.3rem 0.6rem;
-            border-radius: 20px;
+            font-size: 0.8rem;
+            background: linear-gradient(135deg, rgba(35, 166, 213, 0.2), rgba(35, 213, 171, 0.2));
+            color: #38bdf8;
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            padding: 0.3rem 0.8rem;
+            border-radius: 30px;
+            font-weight: 600;
         }
 
         .card-desc {
             font-size: 0.95rem;
-            color: #666;
-            margin-bottom: 1rem;
-            line-height: 1.4;
+            color: #94a3b8;
+            margin-bottom: 1.2rem;
+            line-height: 1.5;
+            flex-grow: 1;
         }
 
         .card-footer {
@@ -135,16 +195,20 @@
             justify-content: space-between;
             align-items: center;
             font-size: 0.9rem;
-            color: #888;
-            border-top: 1px solid #eee;
+            color: #cbd5e1;
+            border-top: 1px solid rgba(255,255,255,0.08);
             padding-top: 1rem;
         }
 
         .rating {
-            color: #f59f00;
+            color: #fbbf24;
             font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 4px;
         }
 
+        /* 모달 팝업 애니메이션 */
         .modal {
             display: none;
             position: fixed;
@@ -152,109 +216,215 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0,0,0,0.5);
+            background-color: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(8px);
             justify-content: center;
             align-items: center;
             z-index: 1000;
             padding: 1rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal.show {
+            display: flex;
+            opacity: 1;
         }
 
         .modal-content {
-            background: white;
+            background: #1e293b;
+            color: #f8fafc;
             width: 100%;
-            max-width: 600px;
-            border-radius: 15px;
+            max-width: 650px;
+            border-radius: 24px;
             overflow: hidden;
             max-height: 90vh;
             overflow-y: auto;
-            animation: fadeIn 0.3s;
+            border: 1px solid rgba(255,255,255,0.1);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            transform: scale(0.9);
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
+        .modal.show .modal-content {
+            transform: scale(1);
         }
 
         .modal-header {
-            background-color: #2a5298;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
             color: white;
-            padding: 1.5rem;
+            padding: 1.8rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
+        .modal-header h2 {
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
         .close-btn {
-            background: none;
+            background: rgba(255,255,255,0.2);
             border: none;
             color: white;
-            font-size: 1.5rem;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            font-size: 1.4rem;
             cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .close-btn:hover {
+            background: rgba(255,255,255,0.4);
+            transform: rotate(90deg);
         }
 
         .modal-body {
-            padding: 1.5rem;
+            padding: 1.8rem;
         }
 
         .modal-section-title {
-            font-size: 1.1rem;
-            font-weight: bold;
-            margin-top: 1rem;
-            margin-bottom: 0.5rem;
-            color: #2a5298;
-            border-bottom: 2px solid #e3f2fd;
-            padding-bottom: 0.3rem;
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #38bdf8;
+            border-bottom: 2px solid rgba(56, 189, 248, 0.2);
+            padding-bottom: 0.4rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
         .menu-list {
             list-style: none;
-            margin-bottom: 1rem;
+            margin-bottom: 1.2rem;
         }
 
         .menu-item {
             display: flex;
             justify-content: space-between;
-            padding: 0.4rem 0;
-            border-bottom: 1px dashed #eee;
-            font-size: 0.95rem;
+            padding: 0.6rem 0;
+            border-bottom: 1px dashed rgba(255,255,255,0.1);
+            font-size: 1rem;
+            color: #cbd5e1;
         }
 
         .review-box {
-            background-color: #f8f9fa;
-            padding: 0.8rem;
-            border-radius: 8px;
+            background-color: rgba(15, 23, 42, 0.6);
+            padding: 1.2rem;
+            border-radius: 12px;
+            font-size: 0.95rem;
+            color: #94a3b8;
+            line-height: 1.6;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        /* 이메일 전송 섹션 스타일 */
+        .email-share-box {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, rgba(35, 166, 213, 0.1), rgba(35, 213, 171, 0.1));
+            border-radius: 16px;
+            border: 1px solid rgba(35, 213, 171, 0.3);
+        }
+
+        .email-input-group {
+            display: flex;
+            gap: 8px;
+            margin-top: 0.8rem;
+        }
+
+        .email-input-group input {
+            flex-grow: 1;
+            padding: 0.8rem 1rem;
+            border-radius: 10px;
+            border: 1px solid rgba(255,255,255,0.2);
+            background: #0f172a;
+            color: white;
+            outline: none;
+        }
+
+        .email-input-group input:focus {
+            border-color: #38bdf8;
+        }
+
+        .btn-action {
+            padding: 0.8rem 1.2rem;
+            border-radius: 10px;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
             font-size: 0.9rem;
-            color: #555;
-            margin-top: 0.5rem;
-            line-height: 1.4;
+        }
+
+        .btn-primary {
+            background: #38bdf8;
+            color: #0f172a;
+        }
+
+        .btn-primary:hover {
+            background: #7dd3fc;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: #334155;
+            color: white;
+            margin-top: 0.8rem;
+            width: 100%;
+            justify-content: center;
+        }
+
+        .btn-secondary:hover {
+            background: #475569;
         }
 
         footer {
             text-align: center;
-            padding: 2rem;
-            color: #888;
-            font-size: 0.9rem;
-            margin-top: 3rem;
-            border-top: 1px solid #ddd;
+            padding: 3rem;
+            color: #64748b;
+            font-size: 0.95rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>🍱 오산 찐 맛집 아카이브</h1>
-        <p>상세 정보와 메뉴를 보려면 식당 카드를 클릭하세요!</p>
+        <h1>✨ 오산 찐 맛집 큐레이션</h1>
+        <p>엄선된 로컬 맛집 정보와 메뉴를 확인하고 메일로 공유해보세요!</p>
     </header>
 
     <div class="container">
         <div class="search-box">
-            <input type="text" id="searchInput" placeholder="식당 이름, 메뉴, 지역을 검색해보세요 (예: 초밥, 부대찌개, 국밥)..." onkeyup="searchRestaurant()">
+            <input type="text" id="searchInput" placeholder="식당명, 메뉴, 위치 검색 (예: 초밥, 국밥, 궐동)..." onkeyup="searchRestaurant()">
             <button onclick="searchRestaurant()">검색</button>
         </div>
 
         <div class="restaurant-grid" id="restaurantGrid"></div>
     </div>
 
+    <!-- 모달 상세창 -->
     <div class="modal" id="detailModal">
         <div class="modal-content">
             <div class="modal-header">
@@ -266,11 +436,10 @@
     </div>
 
     <footer>
-        <p>&copy; Osan Food Guide. Verified Local Data.</p>
+        <p>&copy; Osan Food Guide. Premium Interactive Edition.</p>
     </footer>
 
     <script>
-        // 22개 식당별로 각각 완전히 고유하고 매칭되는 고화질 음식 이미지 적용
         const restaurants = [
             {
                 id: 1,
@@ -298,8 +467,7 @@
                 menus: [
                     { name: "돼지머리국밥", price: "10,000원" },
                     { name: "돼지머리수육 (소)", price: "12,000원" },
-                    { name: "돼지머리수육 (중)", price: "17,000원" },
-                    { name: "돼지머리수육 (대)", price: "22,000원" }
+                    { name: "돼지머리수육 (중)", price: "17,000원" }
                 ],
                 review: "구수한 토렴식 국물과 잡내 없이 야들야들한 수육 맛이 일품인 오산 로컬 대표 맛집."
             },
@@ -314,7 +482,6 @@
                 menus: [
                     { name: "돼지국밥", price: "9,000원" },
                     { name: "순대국", price: "9,000원" },
-                    { name: "내장탕", price: "9,000원" },
                     { name: "수육", price: "20,000원" }
                 ],
                 review: "깔끔하고 진한 사골 육수 덕분에 국밥 마니아들 사이에서 꾸준히 찬사를 받는 곳."
@@ -330,8 +497,7 @@
                 menus: [
                     { name: "선지해장국", price: "11,000원" },
                     { name: "얼큰 내장탕", price: "13,000원" },
-                    { name: "우거지갈비탕", price: "14,000원" },
-                    { name: "항정살 (600g)", price: "56,000원" }
+                    { name: "우거지갈비탕", price: "14,000원" }
                 ],
                 review: "속이 확 풀리는 깊고 얼큰한 국물 맛으로 언제나 단골들로 붐비는 곳."
             },
@@ -346,8 +512,7 @@
                 menus: [
                     { name: "묵은지 오일 파스타", price: "23,000원" },
                     { name: "마라 크림 파스타", price: "24,000원" },
-                    { name: "전복 크림 리조또", price: "26,000원" },
-                    { name: "오믈렛 스크램블", price: "24,000원" }
+                    { name: "전복 크림 리조또", price: "26,000원" }
                 ],
                 review: "분위기가 뛰어나 데이트나 아이 동반 가족 모임 장소로 강력 추천하는 곳."
             },
@@ -361,8 +526,7 @@
                 image: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&auto=format&fit=crop&q=80",
                 menus: [
                     { name: "황금상황 삼계탕", price: "19,000원" },
-                    { name: "누룽지 닭백숙", price: "68,000원" },
-                    { name: "누룽지 오리백숙", price: "75,000원" }
+                    { name: "누룽지 닭백숙", price: "68,000원" }
                 ],
                 review: "진하고 구수한 상황버섯 국물에 쫄깃한 누룽지가 통으로 들어가 어르신 모시기 좋은 곳."
             },
@@ -376,72 +540,12 @@
                 image: "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=600&auto=format&fit=crop&q=80",
                 menus: [
                     { name: "물냉면 / 비빔냉면", price: "11,000원" },
-                    { name: "회냉면", price: "12,000원" },
                     { name: "왕갈비탕", price: "15,000원" }
                 ],
                 review: "양념이 새콤달콤 맛있고 양이 푸짐하며 여름철 대기 필수인 오산 냉면 명가."
             },
             {
                 id: 8,
-                name: "할머니창업순대국",
-                category: "국밥/순대",
-                desc: "오색시장 내에서 푸짐한 머깃고기와 순대를 제공하는 오래된 순대국집.",
-                rating: 4.6,
-                location: "경기 오산시 시장길 21-1",
-                image: "https://images.unsplash.com/photo-1547496502-ffa22d388aed?w=600&auto=format&fit=crop&q=80",
-                menus: [
-                    { name: "순대국밥", price: "9,000원" },
-                    { name: "내장순대국", price: "10,000원" },
-                    { name: "모듬순대 (소)", price: "15,000원" }
-                ],
-                review: "건더기가 뚝배기 가득 들어있어 푸짐함에 반하게 되는 진짜 시장 국밥."
-            },
-            {
-                id: 9,
-                name: "오산명가",
-                category: "한식/코다리",
-                desc: "매콤달콤한 특제 양념에 시래기가 어우러진 코다리 조림 맛집.",
-                rating: 4.7,
-                location: "경기 오산시 경기동로 135",
-                image: "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?w=600&auto=format&fit=crop&q=80",
-                menus: [
-                    { name: "매콤 명태조림 (소)", price: "33,000원" },
-                    { name: "시래기 명태조림 (소)", price: "37,000원" }
-                ],
-                review: "김 위에 밥과 살코기, 콩나물을 올려 싸먹는 조합이 일품인 밥도둑 식당."
-            },
-            {
-                id: 10,
-                name: "에스쿠도 (ESCUDO)",
-                category: "카페/베이커리",
-                desc: "감각적인 로스팅 스페셜티 커피와 수제 베이커리가 특징인 대형 카페.",
-                rating: 4.8,
-                location: "경기 오산시 내삼미로 80",
-                image: "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=600&auto=format&fit=crop&q=80",
-                menus: [
-                    { name: "에스쿠도 아메리카노", price: "5,500원" },
-                    { name: "시그니처 라떼", price: "6,500원" },
-                    { name: "소금빵", price: "3,800원" }
-                ],
-                review: "커피 향과 디저트 퀄리티가 훌륭하며 넓고 세련되어 휴식하기 좋은 공간."
-            },
-            {
-                id: 11,
-                name: "초평동가마솥",
-                category: "한식/보리밥",
-                desc: "가마솥 밥과 신선한 나물 반찬이 한상 차려지는 건강한 보리밥집.",
-                rating: 4.6,
-                location: "경기 오산시 초평로 45",
-                image: "https://images.unsplash.com/photo-1540420773420-3366772f4999?w=600&auto=format&fit=crop&q=80",
-                menus: [
-                    { name: "가마솥 보리밥정식", price: "11,000원" },
-                    { name: "제육볶음", price: "10,000원" },
-                    { name: "해물파전", price: "15,000원" }
-                ],
-                review: "각종 산채나물에 고소한 참기름과 강된장을 비벼 먹는 옛날 정겨운 맛."
-            },
-            {
-                id: 12,
                 name: "운암명가 부대찌개",
                 category: "한식/찌개",
                 desc: "파채와 마늘, 햄이 수북하게 올려진 시원하고 진한 오산 1위 부대찌개.",
@@ -455,7 +559,7 @@
                 review: "파에서 나오는 단맛과 특제 양념의 조화가 독보적임. 밥 두 공기가 기본인 집."
             },
             {
-                id: 13,
+                id: 9,
                 name: "민들레화로",
                 category: "고기/숯불구이",
                 desc: "참숯불에 통으로 굴려가며 구워 먹는 통갈매기살 육즙 명가.",
@@ -464,57 +568,12 @@
                 image: "https://images.unsplash.com/photo-1544025162-d76694265947?w=600&auto=format&fit=crop&q=80",
                 menus: [
                     { name: "통갈매기살 (500g)", price: "38,000원" },
-                    { name: "통항정살 (500g)", price: "40,000원" },
                     { name: "김치말이국수", price: "6,000원" }
                 ],
                 review: "갈매기살의 육즙이 살아있으며 사이드로 나오는 시원한 김치말이국수와의 궁합이 환상적."
             },
             {
-                id: 14,
-                name: "춘천골닭갈비 (궐동점)",
-                category: "한식/닭갈비",
-                desc: "매콤달콤한 철판 닭갈비와 볶음밥이 인기를 끌고 있는 궐동 대표 고깃집.",
-                rating: 4.5,
-                location: "경기 오산시 매화로 48",
-                image: "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=600&auto=format&fit=crop&q=80",
-                menus: [
-                    { name: "뼈없는 닭갈비", price: "13,000원" },
-                    { name: "치즈 닭갈비", price: "15,000원" },
-                    { name: "날치알 볶음밥", price: "3,000원" }
-                ],
-                review: "통통한 닭고기 살과 푸짐한 사리, 마지막 치즈 볶음밥까지 완벽한 코스."
-            },
-            {
-                id: 15,
-                name: "보드람치킨 (오산운암점)",
-                category: "치킨/호프",
-                desc: "얇고 바삭한 튀김옷에 특유의 한약재 은은한 향이 감도는 레트로 치킨.",
-                rating: 4.6,
-                location: "경기 오산시 운천로 80",
-                image: "https://images.unsplash.com/photo-1626645738196-c2a7c87a8f58?w=600&auto=format&fit=crop&q=80",
-                menus: [
-                    { name: "보드람 후라이드 치킨", price: "21,000원" },
-                    { name: "양념치킨", price: "22,000원" }
-                ],
-                review: "겉은 바삭하고 속은 촉촉함. 시원한 맥주 한 잔 생각날 때 최고로 꼽히는 집."
-            },
-            {
-                id: 16,
-                name: "아사간판 (Aasa)",
-                category: "아시안/인도커리",
-                desc: "현지인 셰프가 직접 조리하는 화덕 난과 진한 커리 전문 인도 요리점.",
-                rating: 4.7,
-                location: "경기 오산시 시장성호로 22",
-                image: "https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=600&auto=format&fit=crop&q=80",
-                menus: [
-                    { name: "치킨 마크니 커리", price: "12,000원" },
-                    { name: "버터 난", price: "3,500원" },
-                    { name: "탄두리 치킨", price: "10,000원" }
-                ],
-                review: "갓 구워 나온 쫄깃한 버터 난을 부드러운 치킨 커리에 찍어 먹는 이색적인 로컬 맛집."
-            },
-            {
-                id: 17,
+                id: 10,
                 name: "북극해고등어 (본점)",
                 category: "생선구이/한식",
                 desc: "대형 화덕에서 겉은 바삭하고 속은 촉촉하게 구워내는 생선구이 정식.",
@@ -523,103 +582,32 @@
                 image: "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?w=600&auto=format&fit=crop&q=80",
                 menus: [
                     { name: "화덕 고등어구이 정식", price: "14,000원" },
-                    { name: "화덕 삼치구이 정식", price: "16,000원" },
-                    { name: "화덕 갈치구이 정식", price: "18,000원" }
+                    { name: "화덕 삼치구이 정식", price: "16,000원" }
                 ],
                 review: "비린내가 전혀 없고 담백하며 무한 리필 셀프 바의 정갈한 밑반찬들도 훌륭함."
-            },
-            {
-                id: 18,
-                name: "삼대째손두부 (궐동점)",
-                category: "한식/두부",
-                desc: "매일 아침 직접 만드는 고소한 손두부와 순두부찌개 전문점.",
-                rating: 4.6,
-                location: "경기 오산시 대원로 29",
-                image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=600&auto=format&fit=crop&q=80",
-                menus: [
-                    { name: "얼큰 해물순두부", price: "10,000원" },
-                    { name: "청국장 순두부", price: "10,000원" },
-                    { name: "두부보쌈", price: "35,000원" }
-                ],
-                review: "식전 제공되는 진한 콩물부터 마음을 사로잡음. 속이 편안해지는 자극적이지 않은 맛."
-            },
-            {
-                id: 19,
-                name: "명장시대 (오산점)",
-                category: "카페/베이커리",
-                desc: "대한민국 제과명장의 빵과 저수지 뷰를 한눈에 즐기는 대형 힐링 카페.",
-                rating: 4.7,
-                location: "경기 오산시 서랑로 18",
-                image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=600&auto=format&fit=crop&q=80",
-                menus: [
-                    { name: "명장 롱소세지빵", price: "6,800원" },
-                    { name: "몽블랑", price: "7,000원" },
-                    { name: "아메리카노", price: "6,000원" }
-                ],
-                review: "베이커리 종류가 다양하고 퀄리티가 남다름. 주말 드라이브 코스로 제격."
-            },
-            {
-                id: 20,
-                name: "홍혁 (오산본점)",
-                category: "중식/짬뽕",
-                desc: "깊고 진한 불향 육수에 차돌박이가 가득 올라간 차돌짬뽕 인기집.",
-                rating: 4.5,
-                location: "경기 오산시 운암로 19",
-                image: "https://images.unsplash.com/photo-1617093727343-374698b1b08d?w=600&auto=format&fit=crop&q=80",
-                menus: [
-                    { name: "차돌짬뽕", price: "12,000원" },
-                    { name: "해물간짜장", price: "9,000원" },
-                    { name: "찹쌀탕수육 (소)", price: "18,000원" }
-                ],
-                review: "국물이 얼큰하고 칼칼해 해장용으로 최고. 바삭한 찹쌀탕수육과의 조합 추천."
-            },
-            {
-                id: 21,
-                name: "스티머스 (Steamers) 커피",
-                category: "카페/디저트",
-                desc: "직접 로스팅한 원두로 정성껏 드립해 주는 감성 스페셜티 커피 전문점.",
-                rating: 4.8,
-                location: "경기 오산시 수청로 106",
-                image: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=600&auto=format&fit=crop&q=80",
-                menus: [
-                    { name: "필터 스페셜티 커피", price: "6,000원" },
-                    { name: "아인슈페너", price: "6,000원" },
-                    { name: "바스크 치즈케이크", price: "6,500원" }
-                ],
-                review: "커피 본연의 풍미가 훌륭하며 수제 바스크 치즈케이크가 부드럽고 달콤함."
-            },
-            {
-                id: 22,
-                name: "오산 옛날통닭",
-                category: "치킨/분식",
-                desc: "오색시장 입구에서 바로 튀겨내는 바삭하고 짭조름한 추억의 가성비 통닭.",
-                rating: 4.5,
-                location: "경기 오산시 오산로290번길 3",
-                image: "https://images.unsplash.com/photo-1562967914-608f82629710?w=600&auto=format&fit=crop&q=80",
-                menus: [
-                    { name: "옛날통닭 (1마리)", price: "8,500원" },
-                    { name: "옛날통닭 (2마리)", price: "16,000원" },
-                    { name: "닭똥집 튀김", price: "10,000원" }
-                ],
-                review: "바삭바삭한 닭껍질과 고소한 속살의 조화. 가성비 최고의 옛날 통닭."
             }
         ];
+
+        let selectedResto = null;
 
         function displayRestaurants(list) {
             const grid = document.getElementById('restaurantGrid');
             grid.innerHTML = '';
 
             if (list.length === 0) {
-                grid.innerHTML = `<p style="grid-column: 1/-1; text-align: center; color: #888; padding: 2rem;">검색 결과가 없습니다 🥲</p>`;
+                grid.innerHTML = `<p style="grid-column: 1/-1; text-align: center; color: #94a3b8; padding: 3rem;">검색 결과가 없습니다 🥲</p>`;
                 return;
             }
 
-            list.forEach(resto => {
+            list.forEach((resto, index) => {
                 const card = document.createElement('div');
                 card.className = 'card';
+                card.style.animation = `fadeInUp 0.5s ease ${index * 0.05}s both`;
                 card.onclick = () => openModal(resto);
                 card.innerHTML = `
-                    <img src="${resto.image}" alt="${resto.name}">
+                    <div class="img-wrapper">
+                        <img src="${resto.image}" alt="${resto.name}">
+                    </div>
                     <div class="card-content">
                         <div class="card-title">
                             <span>${resto.name}</span>
@@ -628,7 +616,7 @@
                         <p class="card-desc">${resto.desc}</p>
                         <div class="card-footer">
                             <span>📍 ${resto.location.split(',')[0]}</span>
-                            <span class="rating">⭐ ${resto.rating}</span>
+                            <span class="rating">★ ${resto.rating}</span>
                         </div>
                     </div>
                 `;
@@ -637,6 +625,7 @@
         }
 
         function openModal(resto) {
+            selectedResto = resto;
             document.getElementById('modalTitle').innerText = resto.name;
             
             let menuHtml = '';
@@ -644,21 +633,75 @@
                 menuHtml += `<li class="menu-item"><span>${menu.name}</span><strong>${menu.price}</strong></li>`;
             });
 
+            // 지도 검색 URL 생성
+            const mapSearchUrl = `https://map.naver.com/v5/search/${encodeURIComponent(resto.name + ' ' + resto.location)}`;
+
             const bodyHtml = `
-                <p style="color: #666; margin-bottom: 1rem; font-size: 0.95rem;">${resto.desc}</p>
-                <p style="margin-bottom: 1rem; font-size: 0.9rem;"><strong>주소:</strong> ${resto.location}</p>
-                <div class="modal-section-title">📜 주요 메뉴 및 가격</div>
+                <p style="color: #94a3b8; margin-bottom: 1rem; font-size: 1rem;">${resto.desc}</p>
+                <p style="margin-bottom: 1.2rem; font-size: 0.95rem; color: #cbd5e1;"><strong>📍 위치:</strong> ${resto.location}</p>
+                
+                <div class="modal-section-title">📜 주요 메뉴</div>
                 <ul class="menu-list">${menuHtml}</ul>
-                <div class="modal-section-title">💡 방문자 리뷰 및 특징 요약</div>
+                
+                <div class="modal-section-title">💡 방문 요약 평</div>
                 <div class="review-box">${resto.review}</div>
+
+                <!-- 메일 보내기 / 공유 영역 -->
+                <div class="email-share-box">
+                    <div style="font-weight: bold; font-size: 1.05rem; color: #38bdf8; margin-bottom: 0.3rem;">✉️ 식당 정보 메일로 전송하기</div>
+                    <p style="font-size: 0.85rem; color: #94a3b8;">이 맛집 정보를 내 메일이나 친구 메일로 전송할 수 있습니다.</p>
+                    
+                    <div class="email-input-group">
+                        <input type="email" id="targetEmail" placeholder="수신 메일 주소 입력 (선택)">
+                        <button class="btn-action btn-primary" onclick="sendMailDirect('${resto.name}', '${resto.location}', '${mapSearchUrl}')">메일 보내기</button>
+                    </div>
+
+                    <button class="btn-action btn-secondary" onclick="copyRestoInfo('${resto.name}', '${resto.location}', '${mapSearchUrl}')">
+                        🔗 식당 정보 클립보드 복사
+                    </button>
+                </div>
             `;
 
             document.getElementById('modalBody').innerHTML = bodyHtml;
-            document.getElementById('detailModal').style.display = 'flex';
+            const modal = document.getElementById('detailModal');
+            modal.classList.add('show');
         }
 
         function closeModal() {
-            document.getElementById('detailModal').style.display = 'none';
+            const modal = document.getElementById('detailModal');
+            modal.classList.remove('show');
+        }
+
+        // 1. 이메일 전송 기능 (mailto 연동 방식)
+        function sendMailDirect(name, location, mapUrl) {
+            const emailInput = document.getElementById('targetEmail').value.trim();
+            const subject = encodeURIComponent(`[오산 맛집 추천] ${name} 정보`);
+            const body = encodeURIComponent(
+                `안녕하세요!\n\n오산 맛집 [ ${name} ] 정보를 공유합니다.\n\n` +
+                `📍 위치: ${location}\n` +
+                `🗺️ 지도 보기: ${mapUrl}\n\n` +
+                `맛있는 식사 되세요!`
+            );
+
+            // 기본 이메일 프로그램 호출
+            const mailtoLink = `mailto:${emailInput}?subject=${subject}&body=${body}`;
+            window.location.href = mailtoLink;
+
+            if(emailInput) {
+                alert(`${emailInput} 주소로 이메일 작성 창이 열렸습니다.`);
+            } else {
+                alert(`이메일 프로그램이 열렸습니다.`);
+            }
+        }
+
+        // 2. 클립보드 복사 기능
+        function copyRestoInfo(name, location, mapUrl) {
+            const textToCopy = `[오산 맛집] ${name}\n위치: ${location}\n지도: ${mapUrl}`;
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                alert(`'${name}' 정보가 클립보드에 복사되었습니다! 카카오톡이나 메시지 창에 붙여넣어 공유해 보세요.`);
+            }).catch(err => {
+                alert('복사 중 오류가 발생했습니다.');
+            });
         }
 
         window.onclick = function(event) {
