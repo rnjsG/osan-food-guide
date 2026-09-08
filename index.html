@@ -288,6 +288,20 @@
             padding: 1.8rem;
         }
 
+        .info-row {
+            margin-bottom: 0.6rem;
+            font-size: 0.95rem;
+            color: #cbd5e1;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+        }
+
+        .info-row strong {
+            color: #38bdf8;
+            min-width: 80px;
+        }
+
         .modal-section-title {
             font-size: 1.15rem;
             font-weight: 700;
@@ -325,8 +339,8 @@
             border: 1px solid rgba(255,255,255,0.05);
         }
 
-        /* 이메일 전송 섹션 스타일 */
-        .email-share-box {
+        /* 공유 및 외부 링크 액션 영역 */
+        .action-box {
             margin-top: 2rem;
             padding: 1.5rem;
             background: linear-gradient(135deg, rgba(35, 166, 213, 0.1), rgba(35, 213, 171, 0.1));
@@ -365,6 +379,8 @@
             align-items: center;
             gap: 6px;
             font-size: 0.9rem;
+            text-decoration: none;
+            justify-content: center;
         }
 
         .btn-primary {
@@ -377,12 +393,25 @@
             transform: translateY(-2px);
         }
 
-        .btn-secondary {
-            background: #334155;
+        .btn-site {
+            background: linear-gradient(135deg, #10b981, #059669);
             color: white;
             margin-top: 0.8rem;
             width: 100%;
-            justify-content: center;
+            font-size: 1rem;
+        }
+
+        .btn-site:hover {
+            opacity: 0.95;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+        }
+
+        .btn-secondary {
+            background: #334155;
+            color: white;
+            margin-top: 0.6rem;
+            width: 100%;
         }
 
         .btn-secondary:hover {
@@ -412,12 +441,12 @@
 
     <header>
         <h1>✨ 오산 찐 맛집 큐레이션</h1>
-        <p>엄선된 로컬 맛집 정보와 메뉴를 확인하고 메일로 공유해보세요!</p>
+        <p>영업시간부터 지도 위치 연결, 이메일 공유까지 한눈에!</p>
     </header>
 
     <div class="container">
         <div class="search-box">
-            <input type="text" id="searchInput" placeholder="식당명, 메뉴, 위치 검색 (예: 초밥, 국밥, 궐동)..." onkeyup="searchRestaurant()">
+            <input type="text" id="searchInput" placeholder="식당명, 메뉴, 위치 검색 (예: 초밥, 국밥, 운암)..." onkeyup="searchRestaurant()">
             <button onclick="searchRestaurant()">검색</button>
         </div>
 
@@ -446,6 +475,7 @@
                 name: "형제초밥 (오산본점)",
                 category: "일식/초밥",
                 desc: "오산시청 앞 운암프라자에 위치한 가성비 회전초밥 전문점.",
+                hours: "11:30 - 22:00 (브레이크타임 15:00 - 17:00)",
                 rating: 4.8,
                 location: "경기 오산시 대원로 65, 운암프라자 2층",
                 image: "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?w=600&auto=format&fit=crop&q=80",
@@ -461,6 +491,7 @@
                 name: "대흥식당",
                 category: "국밥/수육",
                 desc: "오색시장 내 위치한 50년 전통의 돼지머리국밥 전문 노포.",
+                hours: "08:00 - 20:00 (매달 1, 3번째 월요일 휴무)",
                 rating: 4.9,
                 location: "경기 오산시 오산로278번길 9-12 (오산동)",
                 image: "https://images.unsplash.com/photo-1541832676-9b763b0239ab?w=600&auto=format&fit=crop&q=80",
@@ -476,6 +507,7 @@
                 name: "부용식당",
                 category: "국밥/순대",
                 desc: "블루리본 선정, 20년 전통의 오색시장 대표 순대국밥집.",
+                hours: "07:00 - 20:30 (매주 월요일 정기휴무)",
                 rating: 4.8,
                 location: "경기 오산시 오산로 845-10 (오색시장 내)",
                 image: "https://images.unsplash.com/photo-1555126634-323283e090fa?w=600&auto=format&fit=crop&q=80",
@@ -491,6 +523,7 @@
                 name: "새말해장국",
                 category: "해장국/고기",
                 desc: "얼큰한 선지해장국과 내장탕이 일품인 대표 해장 맛집.",
+                hours: "06:00 - 22:00 (연중무휴)",
                 rating: 4.7,
                 location: "경기 오산시 현충로 95",
                 image: "https://images.unsplash.com/photo-1582878826629-29b7ad1cdc43?w=600&auto=format&fit=crop&q=80",
@@ -506,6 +539,7 @@
                 name: "메르오르 본점",
                 category: "카페/양식",
                 desc: "넓은 야외 정원과 파스타, 브런치를 함께 즐기는 세교 대형 레스토랑.",
+                hours: "10:00 - 21:00 (라스트오더 20:00)",
                 rating: 4.7,
                 location: "경기 오산시 두곡동 11",
                 image: "https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=600&auto=format&fit=crop&q=80",
@@ -521,6 +555,7 @@
                 name: "황금장수촌",
                 category: "보양식/백숙",
                 desc: "상황버섯 누룽지 닭·오리 백숙 전문 건강 보양식당.",
+                hours: "11:00 - 21:30 (매주 화요일 휴무)",
                 rating: 4.6,
                 location: "경기 오산시 성호대로 126",
                 image: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&auto=format&fit=crop&q=80",
@@ -535,6 +570,7 @@
                 name: "우용면옥",
                 category: "냉면/갈비탕",
                 desc: "직접 뽑은 쫄깃한 면발과 깔끔한 온육수가 인상적인 함흥냉면 전문점.",
+                hours: "11:00 - 21:00 (하절기 휴무 없음)",
                 rating: 4.7,
                 location: "경기 오산시 수청로 50",
                 image: "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=600&auto=format&fit=crop&q=80",
@@ -549,6 +585,7 @@
                 name: "운암명가 부대찌개",
                 category: "한식/찌개",
                 desc: "파채와 마늘, 햄이 수북하게 올려진 시원하고 진한 오산 1위 부대찌개.",
+                hours: "10:00 - 21:30 (매주 일요일 휴무)",
                 rating: 4.8,
                 location: "경기 오산시 대원로 63",
                 image: "https://images.unsplash.com/photo-1547592166-23ac45744acd?w=600&auto=format&fit=crop&q=80",
@@ -563,6 +600,7 @@
                 name: "민들레화로",
                 category: "고기/숯불구이",
                 desc: "참숯불에 통으로 굴려가며 구워 먹는 통갈매기살 육즙 명가.",
+                hours: "11:30 - 22:00 (라스트오더 21:00)",
                 rating: 4.7,
                 location: "경기 오산시 외삼미로 7",
                 image: "https://images.unsplash.com/photo-1544025162-d76694265947?w=600&auto=format&fit=crop&q=80",
@@ -577,6 +615,7 @@
                 name: "북극해고등어 (본점)",
                 category: "생선구이/한식",
                 desc: "대형 화덕에서 겉은 바삭하고 속은 촉촉하게 구워내는 생선구이 정식.",
+                hours: "11:00 - 21:00 (라스트오더 20:15)",
                 rating: 4.8,
                 location: "경기 오산시 경기동로 131",
                 image: "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?w=600&auto=format&fit=crop&q=80",
@@ -587,8 +626,6 @@
                 review: "비린내가 전혀 없고 담백하며 무한 리필 셀프 바의 정갈한 밑반찬들도 훌륭함."
             }
         ];
-
-        let selectedResto = null;
 
         function displayRestaurants(list) {
             const grid = document.getElementById('restaurantGrid');
@@ -625,7 +662,6 @@
         }
 
         function openModal(resto) {
-            selectedResto = resto;
             document.getElementById('modalTitle').innerText = resto.name;
             
             let menuHtml = '';
@@ -633,12 +669,14 @@
                 menuHtml += `<li class="menu-item"><span>${menu.name}</span><strong>${menu.price}</strong></li>`;
             });
 
-            // 지도 검색 URL 생성
+            // 지도 사이트 연결 URL 생성
             const mapSearchUrl = `https://map.naver.com/v5/search/${encodeURIComponent(resto.name + ' ' + resto.location)}`;
 
             const bodyHtml = `
-                <p style="color: #94a3b8; margin-bottom: 1rem; font-size: 1rem;">${resto.desc}</p>
-                <p style="margin-bottom: 1.2rem; font-size: 0.95rem; color: #cbd5e1;"><strong>📍 위치:</strong> ${resto.location}</p>
+                <p style="color: #94a3b8; margin-bottom: 1.2rem; font-size: 1rem;">${resto.desc}</p>
+                
+                <div class="info-row"><strong>📍 위치:</strong> <span>${resto.location}</span></div>
+                <div class="info-row"><strong>⏰ 영업시간:</strong> <span>${resto.hours}</span></div>
                 
                 <div class="modal-section-title">📜 주요 메뉴</div>
                 <ul class="menu-list">${menuHtml}</ul>
@@ -646,19 +684,23 @@
                 <div class="modal-section-title">💡 방문 요약 평</div>
                 <div class="review-box">${resto.review}</div>
 
-                <!-- 메일 보내기 / 공유 영역 -->
-                <div class="email-share-box">
-                    <div style="font-weight: bold; font-size: 1.05rem; color: #38bdf8; margin-bottom: 0.3rem;">✉️ 식당 정보 메일로 전송하기</div>
-                    <p style="font-size: 0.85rem; color: #94a3b8;">이 맛집 정보를 내 메일이나 친구 메일로 전송할 수 있습니다.</p>
-                    
-                    <div class="email-input-group">
-                        <input type="email" id="targetEmail" placeholder="수신 메일 주소 입력 (선택)">
-                        <button class="btn-action btn-primary" onclick="sendMailDirect('${resto.name}', '${resto.location}', '${mapSearchUrl}')">메일 보내기</button>
-                    </div>
+                <!-- 외부 연결 및 복사/메일 액션 영역 -->
+                <div class="action-box">
+                    <a href="${mapSearchUrl}" target="_blank" class="btn-action btn-site">
+                        🗺️ 지도 / 사이트로 바로 이동하기 ➔
+                    </a>
 
-                    <button class="btn-action btn-secondary" onclick="copyRestoInfo('${resto.name}', '${resto.location}', '${mapSearchUrl}')">
+                    <button class="btn-action btn-secondary" onclick="copyRestoInfo('${resto.name}', '${resto.location}', '${resto.hours}', '${mapSearchUrl}')">
                         🔗 식당 정보 클립보드 복사
                     </button>
+
+                    <div style="margin-top: 1.2rem; border-top: 1px dashed rgba(255,255,255,0.15); padding-top: 1rem;">
+                        <div style="font-weight: bold; font-size: 0.95rem; color: #38bdf8;">✉️ 정보 메일로 보내기</div>
+                        <div class="email-input-group">
+                            <input type="email" id="targetEmail" placeholder="수신자 이메일 주소 입력">
+                            <button class="btn-action btn-primary" onclick="sendMailDirect('${resto.name}', '${resto.location}', '${resto.hours}', '${mapSearchUrl}')">전송</button>
+                        </div>
+                    </div>
                 </div>
             `;
 
@@ -672,33 +714,33 @@
             modal.classList.remove('show');
         }
 
-        // 1. 이메일 전송 기능 (mailto 연동 방식)
-        function sendMailDirect(name, location, mapUrl) {
+        // 1. 이메일 전송 기능
+        function sendMailDirect(name, location, hours, mapUrl) {
             const emailInput = document.getElementById('targetEmail').value.trim();
             const subject = encodeURIComponent(`[오산 맛집 추천] ${name} 정보`);
             const body = encodeURIComponent(
                 `안녕하세요!\n\n오산 맛집 [ ${name} ] 정보를 공유합니다.\n\n` +
                 `📍 위치: ${location}\n` +
+                `⏰ 영업시간: ${hours}\n` +
                 `🗺️ 지도 보기: ${mapUrl}\n\n` +
                 `맛있는 식사 되세요!`
             );
 
-            // 기본 이메일 프로그램 호출
             const mailtoLink = `mailto:${emailInput}?subject=${subject}&body=${body}`;
             window.location.href = mailtoLink;
 
             if(emailInput) {
-                alert(`${emailInput} 주소로 이메일 작성 창이 열렸습니다.`);
+                alert(`${emailInput} 주소로 이메일 작성 창이 연결되었습니다.`);
             } else {
                 alert(`이메일 프로그램이 열렸습니다.`);
             }
         }
 
         // 2. 클립보드 복사 기능
-        function copyRestoInfo(name, location, mapUrl) {
-            const textToCopy = `[오산 맛집] ${name}\n위치: ${location}\n지도: ${mapUrl}`;
+        function copyRestoInfo(name, location, hours, mapUrl) {
+            const textToCopy = `[오산 맛집] ${name}\n위치: ${location}\n영업시간: ${hours}\n지도링크: ${mapUrl}`;
             navigator.clipboard.writeText(textToCopy).then(() => {
-                alert(`'${name}' 정보가 클립보드에 복사되었습니다! 카카오톡이나 메시지 창에 붙여넣어 공유해 보세요.`);
+                alert(`'${name}' 정보가 클립보드에 복사되었습니다! 원하는 곳에 붙여넣어 공유하세요.`);
             }).catch(err => {
                 alert('복사 중 오류가 발생했습니다.');
             });
