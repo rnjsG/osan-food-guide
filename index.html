@@ -657,6 +657,14 @@
             });
         }
 
+        // 네이버 지도 이동 전용 함수
+        function goToMap(restoName) {
+            const keyword = "오산 " + restoName;
+            // 최신 네이버 지도 공식 검색 URL 구조 (p/search)
+            const mapUrl = "https://map.naver.com/p/search/" + encodeURIComponent(keyword);
+            window.open(mapUrl, '_blank');
+        }
+
         function openModal(resto) {
             currentSelectedResto = resto;
             document.getElementById('modalTitle').innerText = resto.name;
@@ -665,10 +673,6 @@
             resto.menus.forEach(menu => {
                 menuHtml += `<li class="menu-item"><span>${menu.name}</span><strong>${menu.price}</strong></li>`;
             });
-
-            // 검색어: "오산 [가게이름]" (정확한 오산 지점 검색을 보장)
-            const searchQuery = "오산 " + resto.name;
-            const mapSearchUrl = "https://map.naver.com/v5/search/" + encodeURIComponent(searchQuery);
 
             const bodyHtml = `
                 <p style="color: #94a3b8; margin-bottom: 1.2rem; font-size: 1rem;">${resto.desc}</p>
@@ -683,9 +687,10 @@
                 <div class="review-box">${resto.review}</div>
 
                 <div class="action-box">
-                    <a href="${mapSearchUrl}" target="_blank" class="btn-action btn-site">
-                        🗺️ 지도에서 '${searchQuery}' 바로 검색 ➔
-                    </a>
+                    <!-- 자바스크립트 함수로 깔끔하게 처리 -->
+                    <button class="btn-action btn-site" onclick="goToMap('${resto.name}')">
+                        🗺️ 지도에서 '오산 ${resto.name}' 검색하기 ➔
+                    </button>
 
                     <button class="btn-action btn-secondary" onclick="copyCurrentInfo()">
                         🔗 식당 정보 클립보드 복사
@@ -714,8 +719,8 @@
         function sendMailCurrent() {
             if (!currentSelectedResto) return;
             const resto = currentSelectedResto;
-            const searchQuery = "오산 " + resto.name;
-            const mapSearchUrl = "https://map.naver.com/v5/search/" + encodeURIComponent(searchQuery);
+            const keyword = "오산 " + resto.name;
+            const mapUrl = "https://map.naver.com/p/search/" + encodeURIComponent(keyword);
 
             const emailInput = document.getElementById('targetEmail').value.trim();
             const subject = encodeURIComponent(`[오산 맛집 추천] ${resto.name} 정보`);
@@ -723,7 +728,7 @@
                 `안녕하세요!\n\n오산 맛집 [ ${resto.name} ] 정보를 공유합니다.\n\n` +
                 `📍 위치: ${resto.location}\n` +
                 `⏰ 영업시간: ${resto.hours}\n` +
-                `🗺️ 지도 검색: ${mapSearchUrl}\n\n` +
+                `🗺️ 지도 검색: ${mapUrl}\n\n` +
                 `맛있는 식사 되세요!`
             );
 
@@ -739,10 +744,10 @@
         function copyCurrentInfo() {
             if (!currentSelectedResto) return;
             const resto = currentSelectedResto;
-            const searchQuery = "오산 " + resto.name;
-            const mapSearchUrl = "https://map.naver.com/v5/search/" + encodeURIComponent(searchQuery);
+            const keyword = "오산 " + resto.name;
+            const mapUrl = "https://map.naver.com/p/search/" + encodeURIComponent(keyword);
 
-            const textToCopy = `[오산 맛집] ${resto.name}\n위치: ${resto.location}\n영업시간: ${resto.hours}\n지도링크: ${mapSearchUrl}`;
+            const textToCopy = `[오산 맛집] ${resto.name}\n위치: ${resto.location}\n영업시간: ${resto.hours}\n지도링크: ${mapUrl}`;
             navigator.clipboard.writeText(textToCopy).then(() => {
                 alert(`'${resto.name}' 정보가 클립보드에 복사되었습니다! 원하는 곳에 붙여넣어 공유하세요.`);
             }).catch(() => {
